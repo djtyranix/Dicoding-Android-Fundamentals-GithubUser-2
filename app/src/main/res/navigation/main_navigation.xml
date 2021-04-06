@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.nixstudio.githubuser2.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailUserActivity"
+            app:destination="@id/detailUserActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsActivity"
+            app:destination="@id/settingsActivity"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <activity
+        android:id="@+id/detailUserActivity"
+        android:name="com.nixstudio.githubuser2.DetailUserActivity"
+        android:label="detail_user_activity"
+        tools:layout="@layout/detail_user_activity" />
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.nixstudio.githubuser2.ui.settings.SettingsActivity"
+        android:label="SettingsActivity" />
+</navigation>
