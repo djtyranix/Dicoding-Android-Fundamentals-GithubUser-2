@@ -21,4 +21,10 @@
     <string name="language_header">Language</string>
     <string name="application_header">Application</string>
     <string name="select_language_key">select_language_key</string>
+
+    <string name="user_name_dummy">USER_NAME</string>
+    <string name="user_username_dummy">USER_USERNAME</string>
+    <string name="user_company_dummy">USER_COMPANY</string>
+    <string name="contact">EMAIL</string>
+    <string name="user_detail_dummy">USER_DETAILS</string>
 </resources>
