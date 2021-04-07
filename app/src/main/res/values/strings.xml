@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GithubUser2</string>
+    <string name="app_name">Github User</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="setting_menu">Setting Menu</string>
@@ -27,4 +27,6 @@
     <string name="user_company_dummy">USER_COMPANY</string>
     <string name="contact">EMAIL</string>
     <string name="user_detail_dummy">USER_DETAILS</string>
+    <string name="search">Cari User</string>
+    <string name="search_hint">Username, contoh: djtyranix</string>
 </resources>
