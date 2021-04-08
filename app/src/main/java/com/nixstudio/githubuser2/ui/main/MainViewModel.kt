@@ -18,12 +18,12 @@ class MainViewModel : ViewModel() {
     fun setUserList(login: String) {
         val listItems = ArrayList<UsersItem>()
 
-        val apiKey = "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"
+        val apiKey = "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"
         val url = "https://api.github.com/search/users?q=${login}"
 
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token ${apiKey}")
         client.addHeader("User-Agent", "request")
+        client.addHeader("Authorization", "token ${apiKey}")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
@@ -43,25 +43,13 @@ class MainViewModel : ViewModel() {
                         val usersItem = UsersItem()
 
                         //Assigning JSON Object
-                        usersItem.gistsUrl = currentUser.getString("gists_url")
-                        usersItem.reposUrl = currentUser.getString("repos_url")
-                        usersItem.followingUrl = currentUser.getString("following_url")
-                        usersItem.starredUrl = currentUser.getString("starred_url")
                         usersItem.login = currentUser.getString("login")
                         usersItem.followersUrl = currentUser.getString("followers_url")
                         usersItem.type = currentUser.getString("type")
                         usersItem.url = currentUser.getString("url")
-                        usersItem.subscriptionsUrl = currentUser.getString("subscriptions_url")
-                        usersItem.score = currentUser.getDouble("score")
-                        usersItem.receivedEventsUrl = currentUser.getString("received_events_url")
                         usersItem.avatarUrl = currentUser.getString("avatar_url")
-                        usersItem.eventsUrl = currentUser.getString("events_url")
-                        usersItem.htmlUrl = currentUser.getString("html_url")
-                        usersItem.siteAdmin = currentUser.getBoolean("site_admin")
                         usersItem.id = currentUser.getInt("id")
                         usersItem.gravatarId = currentUser.getString("gravatar_id")
-                        usersItem.nodeId = currentUser.getString("node_id")
-                        usersItem.organizationsUrl = currentUser.getString("organizations_url")
 
                         listItems.add(usersItem)
                     }
@@ -84,8 +72,6 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun getUserList(): LiveData<ArrayList<UsersItem>> {
-        return listUsers
-    }
+    fun getUserList(): LiveData<ArrayList<UsersItem>> = listUsers
 
 }

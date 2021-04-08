@@ -1,24 +1,24 @@
 package com.nixstudio.githubuser2.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.nixstudio.githubuser2.databinding.MainFragmentBinding
+import com.nixstudio.githubuser2.model.UsersItem
 
 class MainFragment : Fragment() {
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var viewModel: MainViewModel
-
     private lateinit var viewAdapter: UserListAdapter
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -34,10 +34,6 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//    }
 
     fun searchUser(userLogin: String?) {
         if (userLogin != null) {
@@ -64,6 +60,17 @@ class MainFragment : Fragment() {
                 viewAdapter.setData(usersItem)
             }
         })
+
+        viewAdapter.setOnItemClickCallback(object : UserListAdapter.OnItemClickCallback {
+            override fun onItemClicked(data : UsersItem) {
+                showItemDetail(data)
+            }
+        })
+    }
+
+    private fun showItemDetail(data : UsersItem) {
+        val toDetailUserActivity = MainFragmentDirections.actionMainFragmentToDetailUserActivity(data)
+        view?.findNavController()?.navigate(toDetailUserActivity)
     }
 
     override fun onDestroy() {

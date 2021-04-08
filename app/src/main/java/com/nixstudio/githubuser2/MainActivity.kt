@@ -23,18 +23,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                    .replace(R.id.container, mMainFragment)
-//                    .commitNow()
-//        }
-
         mMainFragment = getForegroundFragment() as MainFragment
-
     }
 
     fun getForegroundFragment(): Fragment? {
-        var navHostFragment = supportFragmentManager.findFragmentByTag("container_fragment")
+        val navHostFragment = supportFragmentManager.findFragmentByTag("container_fragment")
         return when (navHostFragment) {
             null -> null
             else -> navHostFragment.childFragmentManager.fragments.get(0)

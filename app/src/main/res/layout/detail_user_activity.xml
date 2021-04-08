@@ -22,18 +22,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.009" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/follower_fragment_container"
-        android:name="com.nixstudio.githubuser2.ui.detailuser.FollowerFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/detail_user_fragment_container"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/detail_user_fragment_container"
-        app:layout_constraintTop_toBottomOf="@+id/detail_user_fragment_container"
-        app:layout_constraintVertical_bias="0.139" />
 </androidx.constraintlayout.widget.ConstraintLayout>

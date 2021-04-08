@@ -25,7 +25,11 @@
         android:id="@+id/detailUserActivity"
         android:name="com.nixstudio.githubuser2.DetailUserActivity"
         android:label="detail_user_activity"
-        tools:layout="@layout/detail_user_activity" />
+        tools:layout="@layout/detail_user_activity" >
+        <argument
+            android:name="user_data"
+            app:argType="com.nixstudio.githubuser2.model.UsersItem" />
+    </activity>
     <activity
         android:id="@+id/settingsActivity"
         android:name="com.nixstudio.githubuser2.ui.settings.SettingsActivity"
