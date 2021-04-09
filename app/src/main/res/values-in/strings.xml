@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengguna Github</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="setting_menu">Menu Pengaturan</string>
+
+    <string name="title_activity_settings">Pengaturan</string>
+    <string name="language_header">Bahasa</string>
+    <string name="language_option">Pilih Bahasa</string>
+
+    <string name="user_name_dummy">USER_NAME</string>
+    <string name="user_username_dummy">USER_USERNAME</string>
+    <string name="search">Cari Pengguna</string>
+    <string name="search_hint">Username, contoh: djtyranix</string>
+    <string name="followers_following">Pengikut: %1$d | Mengikuti: %2$d</string>
+    <string name="change_language">select_language</string>
+    <string name="language_change_desc">Ubah bahasa dari pengaturan sistem</string>
+    <string name="loading">Memuat User</string>
+</resources>

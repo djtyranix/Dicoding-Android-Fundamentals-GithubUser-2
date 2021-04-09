@@ -1,13 +1,10 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/language_header">
-        <ListPreference
-            android:defaultValue="indonesia"
-            android:entries="@array/language_entries"
-            android:entryValues="@array/language_values"
-            android:key="@string/select_language_key"
-            android:title="Select Language" />
-    </PreferenceCategory>
 
+        <Preference
+            app:key="@string/change_language"
+            app:title="@string/language_option"
+            app:summary="@string/language_change_desc"/>
+    </PreferenceCategory>
 </PreferenceScreen>

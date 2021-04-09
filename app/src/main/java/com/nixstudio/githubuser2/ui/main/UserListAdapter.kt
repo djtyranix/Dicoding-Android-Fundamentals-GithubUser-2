@@ -56,7 +56,7 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         holder.tvUsername.text = user.login
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(listUser[holder.absoluteAdapterPosition])
         }
     }
 

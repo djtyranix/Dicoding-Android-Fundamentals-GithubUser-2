@@ -3,31 +3,17 @@
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="setting_menu">Setting Menu</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="language_header">Language</string>
-    <string name="application_header">Application</string>
-    <string name="select_language_key">select_language_key</string>
+    <string name="language_option">Language Selection</string>
 
     <string name="user_name_dummy">USER_NAME</string>
     <string name="user_username_dummy">USER_USERNAME</string>
-    <string name="user_company_dummy">USER_COMPANY</string>
-    <string name="contact">EMAIL</string>
-    <string name="user_detail_dummy">USER_DETAILS</string>
-    <string name="search">Cari User</string>
-    <string name="search_hint">Username, contoh: djtyranix</string>
+    <string name="search">Search User</string>
+    <string name="search_hint">Username, e.g. djtyranix</string>
     <string name="followers_following">Followers: %1$d | Following: %2$d</string>
+    <string name="change_language">select_language</string>
+    <string name="language_change_desc">Change your system language</string>
+    <string name="loading">Loading User</string>
 </resources>

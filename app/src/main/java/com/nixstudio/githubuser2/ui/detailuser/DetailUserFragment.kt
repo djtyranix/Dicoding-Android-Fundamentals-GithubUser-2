@@ -42,7 +42,7 @@ class DetailUserFragment : Fragment() {
         tvName = binding.tvName
         tvFollowersFollowing = binding.tvFollowersFollowing
 
-        currentActivity.setActionBarTitle("Loading User")
+        currentActivity.setActionBarTitle(resources.getString(R.string.loading))
         setVisibility(false)
         showLoading(true)
 
