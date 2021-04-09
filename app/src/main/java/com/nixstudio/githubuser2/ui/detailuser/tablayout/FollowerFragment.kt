@@ -1,16 +1,13 @@
 package com.nixstudio.githubuser2.ui.detailuser.tablayout
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nixstudio.githubuser2.R
 import com.nixstudio.githubuser2.databinding.FragmentFollowerBinding
-import com.nixstudio.githubuser2.model.UsersItem
 import com.nixstudio.githubuser2.ui.detailuser.DetailUserViewModel
 
 class FollowerFragment : Fragment() {

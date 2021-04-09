@@ -12,8 +12,8 @@ import com.nixstudio.githubuser2.model.UsersItem
 import de.hdodenhof.circleimageview.CircleImageView
 
 class FollowingListAdapter() : RecyclerView.Adapter<FollowingListAdapter.ViewHolder>() {
-    private lateinit var onItemClickCallback : OnItemClickCallback
-    private val listUser : ArrayList<UsersItem> = ArrayList()
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    private val listUser: ArrayList<UsersItem> = ArrayList()
 
     interface OnItemClickCallback {
         fun onItemClicked(data: UsersItem)
@@ -23,9 +23,9 @@ class FollowingListAdapter() : RecyclerView.Adapter<FollowingListAdapter.ViewHol
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var imgPhoto : CircleImageView = itemView.findViewById(R.id.img_user_photo)
-        var tvUsername : TextView = itemView.findViewById(R.id.tv_user_name)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var imgPhoto: CircleImageView = itemView.findViewById(R.id.img_user_photo)
+        var tvUsername: TextView = itemView.findViewById(R.id.tv_user_name)
     }
 
     fun setData(items: ArrayList<UsersItem>) {
@@ -38,7 +38,8 @@ class FollowingListAdapter() : RecyclerView.Adapter<FollowingListAdapter.ViewHol
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view : View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
         return ViewHolder(view)
     }
 

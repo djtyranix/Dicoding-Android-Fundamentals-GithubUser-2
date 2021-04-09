@@ -1,18 +1,15 @@
 package com.nixstudio.githubuser2.ui.detailuser
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nixstudio.githubuser2.R
-import com.nixstudio.githubuser2.databinding.DetailUserFragmentBinding
 import com.nixstudio.githubuser2.databinding.TablayoutContainerFragmentBinding
 
 class TablayoutContainerFragment : Fragment() {
@@ -20,8 +17,8 @@ class TablayoutContainerFragment : Fragment() {
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(
-                R.string.followers,
-                R.string.following
+            R.string.followers,
+            R.string.following
         )
 
         private const val TAB_STATE = "tab_state"

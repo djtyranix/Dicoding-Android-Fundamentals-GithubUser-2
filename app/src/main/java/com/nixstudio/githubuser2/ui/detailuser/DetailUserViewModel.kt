@@ -4,18 +4,13 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
-import com.nixstudio.githubuser2.R
 import com.nixstudio.githubuser2.model.UserDetail
 import com.nixstudio.githubuser2.model.UsersItem
 import cz.msebera.android.httpclient.Header
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
-import java.lang.Exception
 
 class DetailUserViewModel : ViewModel() {
 
@@ -89,9 +84,9 @@ class DetailUserViewModel : ViewModel() {
         client.addHeader("Authorization", "token $apiKey")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<out Header>,
-                    responseBody: ByteArray
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray
             ) {
                 try {
                     val result = String(responseBody)
@@ -120,10 +115,10 @@ class DetailUserViewModel : ViewModel() {
             }
 
             override fun onFailure(
-                    statusCode: Int,
-                    headers: Array<out Header>,
-                    responseBody: ByteArray,
-                    error: Throwable?
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable?
             ) {
                 Log.d("onFailure", error?.message.toString())
             }
@@ -140,9 +135,9 @@ class DetailUserViewModel : ViewModel() {
         client.addHeader("Authorization", "token $apiKey")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
-                    statusCode: Int,
-                    headers: Array<out Header>,
-                    responseBody: ByteArray
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray
             ) {
                 try {
                     val result = String(responseBody)
@@ -171,10 +166,10 @@ class DetailUserViewModel : ViewModel() {
             }
 
             override fun onFailure(
-                    statusCode: Int,
-                    headers: Array<out Header>,
-                    responseBody: ByteArray,
-                    error: Throwable?
+                statusCode: Int,
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable?
             ) {
                 Log.d("onFailure", error?.message.toString())
             }

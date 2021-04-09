@@ -1,7 +1,6 @@
 package com.nixstudio.githubuser2.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,19 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nixstudio.githubuser2.R
 import com.nixstudio.githubuser2.databinding.MainFragmentBinding
 import com.nixstudio.githubuser2.model.UsersItem
 
 class MainFragment : Fragment() {
 
     private var _binding: MainFragmentBinding? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
-    private lateinit var viewAdapter: UserListAdapter
+    lateinit var viewAdapter: UserListAdapter
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
 
         viewAdapter = UserListAdapter()
@@ -31,6 +33,8 @@ class MainFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
             adapter = viewAdapter
         }
+
+        binding.noUser.text = resources.getString(R.string.welcome_message)
 
         return binding.root
     }
@@ -45,6 +49,7 @@ class MainFragment : Fragment() {
     fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = View.VISIBLE
+            binding.noUser.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
         }
@@ -56,20 +61,30 @@ class MainFragment : Fragment() {
 
         viewModel.getUserList().observe(viewLifecycleOwner, { usersItem ->
             if (usersItem != null) {
-                showLoading(false)
+                if (usersItem.size > 0) {
+                    binding.noUser.visibility = View.GONE
+                    binding.userRecyclerView.visibility = View.VISIBLE
+                } else {
+                    binding.noUser.text = resources.getString(R.string.user_not_found)
+                    binding.noUser.visibility = View.VISIBLE
+                    binding.userRecyclerView.visibility = View.GONE
+                }
+
                 viewAdapter.setData(usersItem)
+                showLoading(false)
             }
         })
 
         viewAdapter.setOnItemClickCallback(object : UserListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data : UsersItem) {
+            override fun onItemClicked(data: UsersItem) {
                 showItemDetail(data)
             }
         })
     }
 
-    private fun showItemDetail(data : UsersItem) {
-        val toDetailUserActivity = MainFragmentDirections.actionMainFragmentToDetailUserActivity(data)
+    private fun showItemDetail(data: UsersItem) {
+        val toDetailUserActivity =
+            MainFragmentDirections.actionMainFragmentToDetailUserActivity(data)
         view?.findNavController()?.navigate(toDetailUserActivity)
     }
 

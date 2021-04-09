@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.nixstudio.githubuser2.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_detailUserActivity"
             app:destination="@id/detailUserActivity" />
@@ -25,7 +25,7 @@
         android:id="@+id/detailUserActivity"
         android:name="com.nixstudio.githubuser2.DetailUserActivity"
         android:label="detail_user_activity"
-        tools:layout="@layout/detail_user_activity" >
+        tools:layout="@layout/detail_user_activity">
         <argument
             android:name="user_data"
             app:argType="com.nixstudio.githubuser2.model.UsersItem" />

@@ -2,14 +2,16 @@ package com.nixstudio.githubuser2
 
 import android.app.SearchManager
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.widget.SearchView
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.nixstudio.githubuser2.ui.main.MainFragment
@@ -17,7 +19,7 @@ import com.nixstudio.githubuser2.ui.main.MainFragment
 class MainActivity : AppCompatActivity() {
 
     private var mMainFragment = MainFragment()
-    var doubleBackToExitOnce : Boolean = false
+    var doubleBackToExitOnce: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,10 +75,33 @@ class MainActivity : AppCompatActivity() {
 
         searchView.setOnCloseListener(object : SearchView.OnCloseListener {
             override fun onClose(): Boolean {
-                mMainFragment.showLoading(false)
+                Log.d("Closed", "Closed")
                 return true
             }
         })
+
+        menu.findItem(R.id.search)
+            .setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                    mMainFragment.binding.userRecyclerView.visibility = View.GONE
+
+                    return true
+                }
+
+                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                    if (mMainFragment.viewAdapter.itemCount == 0) {
+                        mMainFragment.binding.noUser.text =
+                            resources.getString(R.string.welcome_message)
+                        mMainFragment.binding.noUser.visibility = View.VISIBLE
+                    } else {
+                        mMainFragment.binding.userRecyclerView.visibility = View.VISIBLE
+                        mMainFragment.binding.noUser.visibility = View.GONE
+                    }
+
+                    return true
+                }
+
+            })
 
         return true
     }
@@ -84,7 +109,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.setting_menu -> {
-                mMainFragment.view?.findNavController()?.navigate(R.id.action_mainFragment_to_settingsActivity)
+                mMainFragment.view?.findNavController()
+                    ?.navigate(R.id.action_mainFragment_to_settingsActivity)
                 return true
             }
             else -> return true

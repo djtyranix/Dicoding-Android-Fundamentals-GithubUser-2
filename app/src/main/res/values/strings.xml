@@ -16,4 +16,6 @@
     <string name="change_language">select_language</string>
     <string name="language_change_desc">Change your system language</string>
     <string name="loading">Loading User</string>
+    <string name="user_not_found">User Not Found</string>
+    <string name="welcome_message">Tap the search button to search user</string>
 </resources>

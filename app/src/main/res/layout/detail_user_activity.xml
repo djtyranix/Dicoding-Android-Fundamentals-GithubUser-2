@@ -7,10 +7,10 @@
     tools:context=".DetailUserActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusableInTouchMode="true"
-        android:id="@+id/container" >
+        android:focusableInTouchMode="true">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/detail_user_fragment_container"

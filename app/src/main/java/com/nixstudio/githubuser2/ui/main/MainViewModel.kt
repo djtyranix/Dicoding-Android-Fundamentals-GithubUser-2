@@ -9,7 +9,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler
 import com.nixstudio.githubuser2.model.UsersItem
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
-import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 

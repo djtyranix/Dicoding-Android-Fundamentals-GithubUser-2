@@ -12,8 +12,8 @@ import com.nixstudio.githubuser2.model.UsersItem
 import de.hdodenhof.circleimageview.CircleImageView
 
 class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
-    private lateinit var onItemClickCallback : OnItemClickCallback
-    private val listUser : ArrayList<UsersItem> = ArrayList()
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    private val listUser: ArrayList<UsersItem> = ArrayList()
 
     interface OnItemClickCallback {
         fun onItemClicked(data: UsersItem)
@@ -23,9 +23,9 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        var imgPhoto : CircleImageView = itemView.findViewById(R.id.img_user_photo)
-        var tvUsername : TextView = itemView.findViewById(R.id.tv_user_name)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var imgPhoto: CircleImageView = itemView.findViewById(R.id.img_user_photo)
+        var tvUsername: TextView = itemView.findViewById(R.id.tv_user_name)
     }
 
     fun setData(items: ArrayList<UsersItem>) {
@@ -35,23 +35,24 @@ class UserListAdapter() : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): ViewHolder {
-        val view : View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_row_user, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(
-            holder: ViewHolder,
-            position: Int
+        holder: ViewHolder,
+        position: Int
     ) {
         val user = listUser[position]
 
         Glide.with(holder.itemView.context)
-                .load(user.avatarUrl)
-                .apply(RequestOptions().override(550, 550))
-                .into(holder.imgPhoto)
+            .load(user.avatarUrl)
+            .apply(RequestOptions().override(550, 550))
+            .into(holder.imgPhoto)
 
         holder.tvUsername.text = user.login
 

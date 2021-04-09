@@ -17,4 +17,6 @@
     <string name="change_language">select_language</string>
     <string name="language_change_desc">Ubah bahasa dari pengaturan sistem</string>
     <string name="loading">Memuat User</string>
+    <string name="user_not_found">User Tidak Ditemukan</string>
+    <string name="welcome_message">Tekan tanda search untuk mencari user</string>
 </resources>

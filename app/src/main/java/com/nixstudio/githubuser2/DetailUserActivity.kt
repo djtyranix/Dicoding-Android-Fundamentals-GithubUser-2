@@ -1,9 +1,8 @@
 package com.nixstudio.githubuser2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.navigation.fragment.navArgs
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import com.nixstudio.githubuser2.ui.detailuser.DetailUserFragment
 import com.nixstudio.githubuser2.ui.detailuser.DetailUserViewModel
