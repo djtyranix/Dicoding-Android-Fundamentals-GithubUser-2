@@ -4,24 +4,32 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.nixstudio.githubuser2.R
 import com.nixstudio.githubuser2.model.UserDetail
+import com.nixstudio.githubuser2.model.UsersItem
 import cz.msebera.android.httpclient.Header
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
 
 class DetailUserViewModel : ViewModel() {
 
     val detailUser = MutableLiveData<UserDetail>()
+    val listFollowers = MutableLiveData<ArrayList<UsersItem>>()
+    val listFollowing = MutableLiveData<ArrayList<UsersItem>>()
+    val apiKey = ""
 
     fun setUserDetail(login: String) {
-        val apiKey = "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"
         val url = "https://api.github.com/users/${login}"
 
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token ${apiKey}")
+        client.addHeader("Authorization", "token $apiKey")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
@@ -72,5 +80,110 @@ class DetailUserViewModel : ViewModel() {
         })
     }
 
+    fun setFollowers(login: String) {
+        val listItems = ArrayList<UsersItem>()
+
+        val url = "https://api.github.com/users/${login}/followers"
+        val client = AsyncHttpClient()
+        client.addHeader("User-Agent", "request")
+        client.addHeader("Authorization", "token $apiKey")
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                    statusCode: Int,
+                    headers: Array<out Header>,
+                    responseBody: ByteArray
+            ) {
+                try {
+                    val result = String(responseBody)
+                    val items = JSONArray(result)
+
+                    for (i in 0 until items.length()) {
+                        val currentUser = items.getJSONObject(i)
+                        val usersItem = UsersItem()
+
+                        //Assigning JSON Object
+                        usersItem.login = currentUser.getString("login")
+                        usersItem.followersUrl = currentUser.getString("followers_url")
+                        usersItem.type = currentUser.getString("type")
+                        usersItem.url = currentUser.getString("url")
+                        usersItem.avatarUrl = currentUser.getString("avatar_url")
+                        usersItem.id = currentUser.getInt("id")
+                        usersItem.gravatarId = currentUser.getString("gravatar_id")
+
+                        listItems.add(usersItem)
+                    }
+
+                    listFollowers.postValue(listItems)
+                } catch (e: Exception) {
+                    Log.d("Exception", e.message.toString())
+                }
+            }
+
+            override fun onFailure(
+                    statusCode: Int,
+                    headers: Array<out Header>,
+                    responseBody: ByteArray,
+                    error: Throwable?
+            ) {
+                Log.d("onFailure", error?.message.toString())
+            }
+        })
+    }
+
+    fun setFollowing(login: String) {
+        val listItems = ArrayList<UsersItem>()
+
+        val url = "https://api.github.com/users/${login}/following"
+
+        val client = AsyncHttpClient()
+        client.addHeader("User-Agent", "request")
+        client.addHeader("Authorization", "token $apiKey")
+        client.get(url, object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                    statusCode: Int,
+                    headers: Array<out Header>,
+                    responseBody: ByteArray
+            ) {
+                try {
+                    val result = String(responseBody)
+                    val items = JSONArray(result)
+
+                    for (i in 0 until items.length()) {
+                        val currentUser = items.getJSONObject(i)
+                        val usersItem = UsersItem()
+
+                        //Assigning JSON Object
+                        usersItem.login = currentUser.getString("login")
+                        usersItem.followersUrl = currentUser.getString("followers_url")
+                        usersItem.type = currentUser.getString("type")
+                        usersItem.url = currentUser.getString("url")
+                        usersItem.avatarUrl = currentUser.getString("avatar_url")
+                        usersItem.id = currentUser.getInt("id")
+                        usersItem.gravatarId = currentUser.getString("gravatar_id")
+
+                        listItems.add(usersItem)
+                    }
+
+                    listFollowing.postValue(listItems)
+                } catch (e: Exception) {
+                    Log.d("Exception", e.message.toString())
+                }
+            }
+
+            override fun onFailure(
+                    statusCode: Int,
+                    headers: Array<out Header>,
+                    responseBody: ByteArray,
+                    error: Throwable?
+            ) {
+                Log.d("onFailure", error?.message.toString())
+            }
+        })
+    }
+
     fun getUserDetail(): LiveData<UserDetail> = detailUser
+
+    fun getFollowers(): LiveData<ArrayList<UsersItem>> = listFollowers
+
+    fun getFollowing(): LiveData<ArrayList<UsersItem>> = listFollowing
 }

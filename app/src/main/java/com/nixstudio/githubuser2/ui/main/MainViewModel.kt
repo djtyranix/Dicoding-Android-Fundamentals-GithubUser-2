@@ -14,16 +14,16 @@ import java.lang.Exception
 class MainViewModel : ViewModel() {
 
     val listUsers = MutableLiveData<ArrayList<UsersItem>>()
+    val apiKey = ""
 
     fun setUserList(login: String) {
         val listItems = ArrayList<UsersItem>()
 
-        val apiKey = "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"
         val url = "https://api.github.com/search/users?q=${login}"
 
         val client = AsyncHttpClient()
         client.addHeader("User-Agent", "request")
-        client.addHeader("Authorization", "token ${apiKey}")
+        client.addHeader("Authorization", "token $apiKey")
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,

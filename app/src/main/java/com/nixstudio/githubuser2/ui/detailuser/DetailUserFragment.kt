@@ -22,10 +22,6 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class DetailUserFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DetailUserFragment()
-    }
-
     private var _binding: DetailUserFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DetailUserViewModel by activityViewModels()

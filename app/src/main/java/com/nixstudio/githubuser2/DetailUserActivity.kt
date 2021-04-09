@@ -7,6 +7,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.navArgs
 import com.nixstudio.githubuser2.ui.detailuser.DetailUserFragment
 import com.nixstudio.githubuser2.ui.detailuser.DetailUserViewModel
+import com.nixstudio.githubuser2.ui.detailuser.TablayoutContainerFragment
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -20,14 +21,23 @@ class DetailUserActivity : AppCompatActivity() {
         val user = args.userData
         val username = user.login
 
+        viewModel.setFollowers(username)
+        viewModel.setFollowing(username)
         viewModel.setUserDetail(username)
 
-        val mFragmentManager = supportFragmentManager
-        val mDetailUserFragment = DetailUserFragment()
+        if (savedInstanceState == null) {
+            val mFragmentManager = supportFragmentManager
+            val mDetailUserFragment = DetailUserFragment()
+            val mTablayoutContainerFragment = TablayoutContainerFragment()
 
-        mFragmentManager.beginTransaction()
-            .replace(R.id.detail_user_fragment_container, mDetailUserFragment)
-            .commit()
+            mFragmentManager.beginTransaction()
+                .replace(R.id.detail_user_fragment_container, mDetailUserFragment)
+                .commit()
+
+            mFragmentManager.beginTransaction()
+                .replace(R.id.tablayout_fragment_container, mTablayoutContainerFragment)
+                .commit()
+        }
     }
 
     fun setActionBarTitle(title: String?) {
