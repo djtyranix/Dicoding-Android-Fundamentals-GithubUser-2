@@ -49,5 +49,4 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-/app/src/main/res/values/apikey.xml
+/gradle.properties

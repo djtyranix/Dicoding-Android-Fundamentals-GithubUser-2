@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.nixstudio.githubuser2.BuildConfig
 import com.nixstudio.githubuser2.model.UserDetail
 import com.nixstudio.githubuser2.model.UsersItem
 import cz.msebera.android.httpclient.Header
@@ -17,7 +18,7 @@ class DetailUserViewModel : ViewModel() {
     val detailUser = MutableLiveData<UserDetail>()
     val listFollowers = MutableLiveData<ArrayList<UsersItem>>()
     val listFollowing = MutableLiveData<ArrayList<UsersItem>>()
-    val apiKey = ""
+    val apiKey = BuildConfig.API_KEY
 
     fun setUserDetail(login: String) {
         val url = "https://api.github.com/users/${login}"

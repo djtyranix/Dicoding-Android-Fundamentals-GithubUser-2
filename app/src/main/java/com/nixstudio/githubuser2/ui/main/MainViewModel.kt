@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.nixstudio.githubuser2.BuildConfig
 import com.nixstudio.githubuser2.model.UsersItem
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
@@ -13,7 +14,7 @@ import org.json.JSONObject
 class MainViewModel : ViewModel() {
 
     val listUsers = MutableLiveData<ArrayList<UsersItem>>()
-    val apiKey = ""
+    val apiKey = BuildConfig.API_KEY
 
     fun setUserList(login: String) {
         val listItems = ArrayList<UsersItem>()
